@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    Function.prototype.before = function (fn) {
+      return () => {
+        fn.apply(this, arguments)
+        return this.apply(this, arguments)
+      }
+    }
+
+    Function.prototype.after = function (fn) {
+      const _self = this
+      return () => {
+        // const ret = 
+        fn.apply(this, arguments)
+        return this.apply(this, arguments)
+      }
+    }
+
+    let fn = function () {
+      console.log(2)
+    }
+
+    fn = fn.before(() => console.log(1)).after(() => console.log(3))
+
+    fn()
+  </script>
+
+</body>
+
+</html>
