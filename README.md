@@ -1,2 +1,1 @@
-# design-patterns-js
- the note of JavaScript Design Patterns
+## JavaScript Design Patterns Tutorial
