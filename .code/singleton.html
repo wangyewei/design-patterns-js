@@ -94,22 +94,56 @@
       //   loginlayer().style.display = "block"
       // }
 
-      const createLoginLayer = () => {
-        let $div = null
-        return () => {
-          if ($div) return $div
+      // const createLoginLayer = (() => {
+      //   let $div = null
+      //   return () => {
+      //     if ($div) return $div
+      //     $div = document.createElement("div")
+      //     $div.innerHTML = "登录窗口"
+      //     $div.style.display = "none"
+      //     document.body.append($div)
+      //     return $div
+      //   }
+      // })()
+      // loginBtn.onclick = () => {
+      //   createLoginLayer().style.display = "block"
+      // }
 
-          $div = document.createElement("div")
-          $div.innerHTML = "登录窗口"
-          $div.style.display = "none"
-          document.body.append($div)
-          return $div
+      const getSingle = function (fn) {
+        let result = null
+        return function () {
+          return result || (result = fn.apply(this, arguments))
         }
       }
-      loginBtn.onclick = () => {
-        console.log(createLoginLayer()())
-        createLoginLayer()().style.display = "block"
+
+      const createLoginLayer = () => {
+        const $div = document.createElement("div")
+        $div.innerHTML = "登录窗口"
+        $div.style.display = "none"
+        document.body.append($div)
+        return $div
       }
+
+      const createSingletonLoginLayer = getSingle(createLoginLayer)
+
+      const createSingletonIframe = getSingle(() => {
+        const $iframe = document.createElement("iframe")
+        document.body.append($iframe)
+        return $iframe
+      })
+      loginBtn.onclick = () => {
+        createSingletonIframe().src = "https://baidu.com"
+      }
+
+      // var createSingleIframe = getSingle(function () {
+      //   var iframe = document.createElement("iframe")
+      //   document.body.appendChild(iframe)
+      //   return iframe
+      // })
+      // document.getElementById("loginBtn").onclick = function () {
+      //   var loginLayer = createSingleIframe()
+      //   loginLayer.src = "http://baidu.com"
+      // }
     </script>
   </body>
 </html>
