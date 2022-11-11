@@ -1,0 +1,27 @@
+{
+  "name": "design-patterns",
+  "version": "1.0.0",
+  "description": "JavaScript Design Patterns Tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangyewei/design-patterns-js.git"
+  },
+  "keywords": [
+    "javascript",
+    "design",
+    "patterns",
+    "javascript",
+    "tutorial",
+    "tutorial"
+  ],
+  "author": "Yewei Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wangyewei/design-patterns-js/issues"
+  },
+  "homepage": "https://github.com/wangyewei/design-patterns-js#readme"
+}
