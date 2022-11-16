@@ -11,73 +11,6 @@
       A Div
     </div>
     <script>
-      // const performanceS = (salary) => salary * 4
-      // const performanceA = (salary) => salary * 3
-      // const performanceB = (salary) => salary * 2
-
-      // const caculateBouns = (perfomanceLevel, salary) => {
-      //   if (perfomanceLevel === "S") return performanceS(salary)
-      //   if (perfomanceLevel === "A") return performanceA(salary)
-      //   if (perfomanceLevel === "C") return performanceB(salary)
-      // }
-
-      // console.log(caculateBouns("A", 20000)) // 60000
-
-      // class PerformanceS {
-      //   calculate(salary) {
-      //     return salary * 4
-      //   }
-      // }
-
-      // class PerformanceA {
-      //   calculate(salary) {
-      //     return salary * 3
-      //   }
-      // }
-
-      // class PerformanceB {
-      //   calculate(salary) {
-      //     return salary * 2
-      //   }
-      // }
-
-      // class Bonus {
-      //   constructor() {
-      //     this.salary = null
-      //     this.strategy = null
-      //   }
-
-      //   setSalary(salary) {
-      //     this.salary = salary
-      //   }
-
-      //   setStrategy(strategy) {
-      //     this.strategy = strategy
-      //   }
-
-      //   getBonus() {
-      //     return this.strategy.calculate(this.salary)
-      //   }
-      // }
-
-      // const bonus = new Bonus()
-
-      // bonus.setSalary(10000)
-      // bonus.setStrategy(new PerformanceS()) // 设置策略对象
-      // console.log(bonus.getBonus()) // 40000
-      // bonus.setStrategy(new PerformanceA()) // 设置策略对象
-      // console.log(bonus.getBonus()) // 30000
-
-      //   const strategies = {
-      //     S: (salary) => salary * 4,
-      //     A: (salary) => salary * 3,
-      //     B: (salary) => salary * 2,
-      //   }
-
-      //   const caculateBouns = (level, salary) => strategies[level](salary)
-
-      //   console.log(caculateBouns("S", 20000))
-      //   console.log(caculateBouns("A", 10000))
       const tween = {
         linear: (t, b, c, d) => (c * t) / d + b,
         easeIn: (t, b, c, d) => c * (t /= d) * t + b,
@@ -143,7 +76,7 @@
 
       const $div = document.getElementsByClassName("div")[0]
       const animate = new Animate($div)
-      animate.start("left", 1500, 500, "strongEaseOut")
+      animate.start("left", 1500, 500, "sineaseOut")
     </script>
   </body>
 </html>

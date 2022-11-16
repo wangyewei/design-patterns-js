@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="url" id="registerForm" method="post">
+      请输入用户名:<input type="text" name="username" />
+
+      请输入密码:<input type="password" name="password" />
+
+      请输入手机号:<input type="text" name="phone" />
+
+      <input type="submit" value="提交" />
+    </form>
+
+    <script>
+      // registerForm.onsubmit = () => {
+      //   if (registerForm.username.value === "") {
+      //     alert("用户名不能为空")
+      //     return
+      //   }
+      //   if (registerForm.password.vaue.length < 6) {
+      //     alert("密码长度不能少于6位")
+      //     return
+      //   }
+      //   if (!/(^1[3|5|8|9][0-9]{9}$)/.test(registerForm.phone.value)) {
+      //     alert("手机格式不正确")
+      //     return
+      //   }
+      // }
+
+      // const strategies = {
+      //   usernameRule: (value, msg) => value === "" && msg,
+      //   passwordRule: (value, length, msg) => value.length < length && msg,
+      //   phoneRule: (value, mgs) => !/(^1[3|5|8|9][0-9]{9}$)/.test(msg) && msg,
+      // }
+
+      // const validataFn = () => {
+      //   const validator = new Validator()
+
+      //   validator.add(registerForm.userName, "usernameRule")
+      //   validator.add(registerForm.password, "passwordRule")
+      //   validataFn.add(registerForm.phone, "phoneRule")
+
+      //   const errorMsg = validator.start()
+      //   if (errorMsg) {
+      //     alert(errorMsg)
+      //     return
+      //   }
+      // }
+
+      // class Validator {
+      //   constructor() {
+      //     this.cacheStack = /** 缓存*/ []
+      //   }
+      //   add(dom, rule, msg) {
+      //     const arr = rule.split(":")
+      //     this.cacheStack.push(() => {
+      //       const strategy = arr.shift()
+      //       arr.unshift(dom.value)
+      //       arr.push(msg)
+      //       return strategies[strategy].apply(dom, arr)
+      //     })
+      //   }
+
+      //   start() {
+      //     this.cacheStack.forEach((item) => {
+      //       const msg = item()
+      //       if (msg) return msg
+      //     })
+      //   }
+      // }
+    </script>
+  </body>
+</html>

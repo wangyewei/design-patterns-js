@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/wangyewei/design-patterns-js/issues"
   },
-  "homepage": "https://github.com/wangyewei/design-patterns-js#readme"
+  "homepage": "https://github.com/wangyewei/design-patterns-js#readme",
+  "dependencies": {
+    "@types/node": "^18.11.9"
+  }
 }
