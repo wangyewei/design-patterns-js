@@ -53,27 +53,64 @@
       //   }
       // }
 
-      // class Validator {
-      //   constructor() {
-      //     this.cacheStack = /** 缓存*/ []
-      //   }
-      //   add(dom, rule, msg) {
-      //     const arr = rule.split(":")
-      //     this.cacheStack.push(() => {
-      //       const strategy = arr.shift()
-      //       arr.unshift(dom.value)
-      //       arr.push(msg)
-      //       return strategies[strategy].apply(dom, arr)
-      //     })
-      //   }
+      class Validator {
+        constructor() {
+          this.cacheStack = /** task cache*/ []
+        }
+        add(dom, rule, msg) {
+          const arr = rule.split(":")
 
-      //   start() {
-      //     this.cacheStack.forEach((item) => {
-      //       const msg = item()
-      //       if (msg) return msg
-      //     })
-      //   }
-      // }
+          Array.prototype.slice.call(rule).forEach((item) => {
+            const strategyArr = item.strategy.split(":")
+            const errMsg = item.msg
+
+            this.cacheStack.push(() => {
+              const strategy = arr.shift()
+              arr.unshift(dom.value)
+              arr.push(msg)
+              return strategies[strategy].apply(dom, arr)
+            })
+          })
+        }
+
+        start() {
+          this.cacheStack.forEach((item) => {
+            const msg = item()
+            if (msg) return msg
+          })
+        }
+      }
+
+      const strategies = {
+        usernameRule: (value, msg) => value === "" && msg,
+        maxLength: (value, length, msg) => value.length >= length && msg,
+      }
+
+      const validataFn = () => {
+        const validator = new Validator()
+
+        validator.add(registerForm.userName, [
+          {
+            strategy: "usernameRule",
+            msg: "用户名不能为空",
+          },
+          {
+            strategy: "maxLength: 10",
+            msg: "用户名长度不能超过10",
+          },
+        ])
+
+        const errorMsg = validator.start()
+        if (errorMsg) {
+          alert(errorMsg)
+          return
+        }
+      }
+
+      registerForm.onsubmit = () => {
+        const errMsg = validataFn()
+        if (errMsg) return false
+      }
     </script>
   </body>
 </html>
